@@ -686,13 +686,13 @@
   /* Botón flotante de audio */
   .btn-flotante-audio {
     position: fixed;
-    top: 20px;
-    right: 20px;
-    width: 46px;
-    height: 46px;
+    bottom: 80px; /* En móviles queda abajo a la derecha, libre de texto y al alcance del pulgar */
+    right: 18px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
-    background: rgba(20, 20, 30, 0.65);
-    border: 1px solid rgba(255, 215, 0, 0.4);
+    background: rgba(20, 20, 30, 0.75);
+    border: 1px solid rgba(255, 215, 0, 0.45);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     display: flex;
@@ -700,7 +700,7 @@
     justify-content: center;
     cursor: pointer;
     z-index: 10000;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
     opacity: 0;
     transform: scale(0.8);
     transition: opacity 0.5s ease, transform 0.3s ease, background 0.3s ease;
@@ -712,7 +712,7 @@
   }
 
   .btn-flotante-audio:hover {
-    background: rgba(40, 40, 60, 0.85);
+    background: rgba(40, 40, 60, 0.9);
     transform: scale(1.08);
   }
 
@@ -720,18 +720,16 @@
     transform: scale(0.92);
   }
 
-  #icono-audio {
-    font-size: 20px;
-    user-select: none;
+  /* En computadoras o pantallas anchas, se mantiene arriba a la derecha */
+  @media (min-width: 768px) {
+    .btn-flotante-audio {
+      top: 25px;
+      bottom: auto;
+      right: 25px;
+      width: 46px;
+      height: 46px;
+    }
   }
-</style>
-
-<script>
-  const botonIniciar = document.getElementById('btn-iniciar');
-  const pantallaInicio = document.getElementById('pantalla-inicio');
-  const musica = document.getElementById('musicaFondo');
-  const btnAudio = document.getElementById('btn-audio');
-  const iconoAudio = document.getElementById('icono-audio');
 
   // Iniciar experiencia al presionar el botón principal
   botonIniciar.addEventListener('click', () => {
