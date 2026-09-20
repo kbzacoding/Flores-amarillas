@@ -683,10 +683,10 @@
     100% { transform: translateY(-7px); }
   }
 
-  /* Botón flotante de audio */
+  /* Botón flotante de audio: Optimizado para celular (abajo a la derecha) */
   .btn-flotante-audio {
     position: fixed;
-    bottom: 80px; /* En móviles queda abajo a la derecha, libre de texto y al alcance del pulgar */
+    bottom: 80px;
     right: 18px;
     width: 44px;
     height: 44px;
@@ -720,7 +720,12 @@
     transform: scale(0.92);
   }
 
-  /* En computadoras o pantallas anchas, se mantiene arriba a la derecha */
+  #icono-audio {
+    font-size: 20px;
+    user-select: none;
+  }
+
+  /* En pantallas de computadora (ancho superior a 768px), se ubica arriba a la derecha */
   @media (min-width: 768px) {
     .btn-flotante-audio {
       top: 25px;
@@ -730,16 +735,21 @@
       height: 46px;
     }
   }
+</style>
 
-  // Iniciar experiencia al presionar el botón principal
+<script>
+  const botonIniciar = document.getElementById('btn-iniciar');
+  const pantallaInicio = document.getElementById('pantalla-inicio');
+  const musica = document.getElementById('musicaFondo');
+  const btnAudio = document.getElementById('btn-audio');
+  const iconoAudio = document.getElementById('icono-audio');
+
   botonIniciar.addEventListener('click', () => {
     musica.play().catch(err => console.log("Audio play error:", err));
     pantallaInicio.classList.add('oculto');
-    // Muestra el botón de audio con una animación suave
     btnAudio.classList.add('visible');
   });
 
-  // Alternar reproducir / pausar (silenciar)
   btnAudio.addEventListener('click', () => {
     if (musica.paused) {
       musica.play();
