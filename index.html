@@ -580,5 +580,20 @@
         
         console.log('🌻 Galaxia de Girasoles - Feliz día de las Flores Amarillas');
     </script>
+<!-- Música de fondo -->
+<audio id="musicaFondo" src="musica.mp3" loop></audio>
+
+<script>
+  // Inicia la música al primer clic o toque en cualquier parte de la pantalla
+  function iniciarMusica() {
+    const audio = document.getElementById('musicaFondo');
+    audio.play().catch(error => {
+      console.log("Esperando interacción del usuario para reproducir audio:", error);
+    });
+  }
+
+  window.addEventListener('click', iniciarMusica, { once: true });
+  window.addEventListener('touchstart', iniciarMusica, { once: true });
+</script>
 </body>
 </html>
